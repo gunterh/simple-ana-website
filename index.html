@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ana Maria Toledo | Healing with Meaning</title>
+    <title>
+      Ana Maria Toledo | Sanación con Sentido / Healing with Meaning
+    </title>
     <meta
       name="description"
-      content="Ana Maria Toledo – Holistic Psychotherapist, Logotherapist, Bioneuroemoción®. Helping you heal body, mind & soul in Wynnum, QLD."
+      content="Ana Maria Toledo – Psicoterapeuta Holística, Logoterapeuta, Bioneuroemoción®. Te ayudo a sanar cuerpo, mente y alma en Wynnum, QLD. Holistic Psychotherapist helping you heal body, mind & soul."
     />
 
     <!-- Fonts -->
@@ -120,6 +122,29 @@
         color: var(--ocean);
       }
 
+      .language-selector {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .lang-btn {
+        background: transparent;
+        border: 1px solid var(--ocean);
+        color: var(--ocean);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .lang-btn.active,
+      .lang-btn:hover {
+        background: var(--ocean);
+        color: white;
+      }
+
       .hamburger {
         display: none;
         font-size: 1.6rem;
@@ -173,9 +198,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: url("https://images.unsplash.com/photo-1507009796101-8e0c8f2e7d5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80")
-          center/cover no-repeat;
-        filter: brightness(0.7) sepia(0.3);
+        background: white;
         z-index: -1;
       }
 
@@ -185,11 +208,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(
-          45deg,
-          rgba(30, 58, 95, 0.3),
-          rgba(74, 144, 194, 0.2)
-        );
+        background: transparent;
         z-index: 0;
       }
 
@@ -206,8 +225,8 @@
         font-size: 3.2rem;
         margin-bottom: 1rem;
         font-weight: 400;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.6);
-        color: white;
+        text-shadow: none;
+        color: var(--deep);
       }
 
       .hero .subtitle {
@@ -216,7 +235,7 @@
         opacity: 1;
         font-style: italic;
         font-family: "Cormorant Garamond", serif;
-        color: white;
+        color: var(--azure);
       }
 
       .hero p {
@@ -226,7 +245,7 @@
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
-        color: white;
+        color: var(--deep);
       }
 
       .cta {
@@ -254,7 +273,7 @@
         bottom: 2rem;
         left: 50%;
         transform: translateX(-50%);
-        color: white;
+        color: var(--azure);
         font-size: 0.9rem;
         opacity: 0.7;
         animation: float 3s infinite ease-in-out;
@@ -606,6 +625,15 @@
       }
 
       @media (max-width: 991px) {
+        .nav-container {
+          flex-wrap: wrap;
+        }
+        .language-selector {
+          order: -1;
+          margin-bottom: 1rem;
+          width: 100%;
+          justify-content: center;
+        }
         .hamburger {
           display: block;
         }
@@ -662,12 +690,40 @@
     <nav id="navbar">
       <div class="container nav-container">
         <a href="#" class="logo">Ana Maria <span>Toledo</span></a>
+        <div class="language-selector">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn active" data-lang="es">ES</button>
+        </div>
         <div class="hamburger" id="hamburger">Menu</div>
         <div class="nav-links" id="nav-links">
-          <a href="#journey">Journey</a>
-          <a href="#approach">Approach</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Connect</a>
+          <a
+            href="#journey"
+            class="lang-text"
+            data-en="Journey"
+            data-es="Mi Historia"
+            >Mi Historia</a
+          >
+          <a
+            href="#approach"
+            class="lang-text"
+            data-en="Approach"
+            data-es="Enfoque"
+            >Enfoque</a
+          >
+          <a
+            href="#services"
+            class="lang-text"
+            data-en="Services"
+            data-es="Servicios"
+            >Servicios</a
+          >
+          <a
+            href="#contact"
+            class="lang-text"
+            data-en="Connect"
+            data-es="Contacto"
+            >Contacto</a
+          >
         </div>
       </div>
     </nav>
@@ -678,32 +734,71 @@
       <div class="hero-overlay"></div>
       <div class="container hero-content" data-aos="fade-up">
         <h1>Ana Maria Toledo</h1>
-        <p class="subtitle">Psychologist | Logotherapist | Healer of Meaning</p>
-        <p>
-          I help you find light in the dark, purpose in pain, and wholeness in
-          brokenness.
+        <p
+          class="subtitle lang-text"
+          data-en="Psychologist | Logotherapist | Healer of Meaning"
+          data-es="Psicóloga | Logoterapeuta | Sanadora del Sentido"
+        >
+          Psicóloga | Logoterapeuta | Sanadora del Sentido
         </p>
-        <a href="#journey" class="cta">Walk With Me</a>
+        <p
+          class="lang-text"
+          data-en="I help you find light in the dark, purpose in pain, and wholeness in brokenness."
+          data-es="Te ayudo a encontrar luz en la oscuridad, propósito en el dolor y plenitud en la fragilidad."
+        >
+          Te ayudo a encontrar luz en la oscuridad, propósito en el dolor y
+          plenitud en la fragilidad.
+        </p>
+        <a
+          href="#journey"
+          class="cta lang-text"
+          data-en="Walk With Me"
+          data-es="Camina Conmigo"
+        >
+          Camina Conmigo
+        </a>
       </div>
-      <div class="scroll-hint">Scroll to begin</div>
+      <div
+        class="scroll-hint lang-text"
+        data-en="Scroll to begin"
+        data-es="Desplázate para comenzar"
+      >
+        Desplázate para comenzar
+      </div>
     </section>
 
     <!-- Journey -->
     <section class="section" id="journey">
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up">
-          A Life in Service of Healing
+        <h2
+          class="section-title lang-text"
+          data-aos="fade-up"
+          data-en="A Life in Service of Healing"
+          data-es="Una Vida al Servicio de la Sanación"
+        >
+          Una Vida al Servicio de la Sanación
         </h2>
         <div class="story-path">
           <div class="path-line"></div>
 
           <div class="story-item" data-aos="fade-up">
             <div class="story-content">
-              <h3>Roots in Colombia</h3>
+              <h3
+                class="lang-text"
+                data-en="Roots in Colombia"
+                data-es="Raíces en Colombia"
+              >
+                Raíces en Colombia
+              </h3>
               <div class="story-date">1993 – 2005</div>
-              <p>
-                Began as an Organisational Psychologist. Discovered how deeply
-                emotions shape human systems — in boardrooms and in souls.
+              <p
+                class="lang-text"
+                data-en="Began as an Organisational Psychologist. Discovered how deeply emotions shape human systems — in boardrooms and in souls."
+                data-es="Comenzé como Psicóloga Organizacional. Descubrí cómo las emociones moldean profundamente los sistemas humanos, tanto en salas de juntas como en las almas."
+              >
+                Comenzé como Psicóloga Organizacional. Descubrí cómo las
+                emociones moldean profundamente los sistemas humanos, tanto en
+                salas de juntas como en las almas.
               </p>
             </div>
           </div>
@@ -734,32 +829,59 @@
             <div class="story-content">
               <h3>Bioneuroemoción®</h3>
               <div class="story-date">2017 – 2018</div>
-              <p>
-                Trained in Mexico. Discovered how the body remembers what the
-                mind forgets.
+              <p
+                class="lang-text"
+                data-en="Trained in Mexico. Discovered how the body remembers what the mind forgets."
+                data-es="Entrenamiento en México. Descubrí cómo el cuerpo recuerda lo que la mente olvida."
+              >
+                Entrenamiento en México. Descubrí cómo el cuerpo recuerda lo que
+                la mente olvida.
               </p>
             </div>
           </div>
 
           <div class="story-item" data-aos="fade-up" data-aos-delay="800">
             <div class="story-content">
-              <h3>Meaning as Medicine</h3>
+              <h3
+                class="lang-text"
+                data-en="Meaning as Medicine"
+                data-es="El Sentido como Medicina"
+              >
+                El Sentido como Medicina
+              </h3>
               <div class="story-date">2020 – 2024</div>
               <p>
                 Advanced Logotherapy. Viktor Frankl’s truth became my north
                 star:
-                <em>“He who has a why to live can bear almost any how.”</em>
+                <em
+                  class="lang-text"
+                  data-en='"He who has a why to live can bear almost any how."'
+                  data-es='"Quien tiene un por qué para vivir puede soportar casi cualquier cómo."'
+                >
+                  "Quien tiene un por qué para vivir puede soportar casi
+                  cualquier cómo."
+                </em>
               </p>
             </div>
           </div>
 
           <div class="story-item" data-aos="fade-up" data-aos-delay="1000">
             <div class="story-content">
-              <h3>Today</h3>
-              <div class="story-date">2017 – Present</div>
-              <p>
-                7+ years of eHealth practice. Helping hundreds heal through
-                science, story, and spirit.
+              <h3 class="lang-text" data-en="Today" data-es="Hoy">Hoy</h3>
+              <div
+                class="story-date lang-text"
+                data-en="2017 – Present"
+                data-es="2017 – Presente"
+              >
+                2017 – Presente
+              </div>
+              <p
+                class="lang-text"
+                data-en="7+ years of eHealth practice. Helping hundreds heal through science, story, and spirit."
+                data-es="Más de 7 años de práctica en eSalud. Ayudando a cientos a sanar a través de la ciencia, la historia y el espíritu."
+              >
+                Más de 7 años de práctica en eSalud. Ayudando a cientos a sanar
+                a través de la ciencia, la historia y el espíritu.
               </p>
             </div>
           </div>
@@ -770,8 +892,13 @@
     <!-- Quote -->
     <section class="quote-section">
       <div class="container">
-        <p class="quote" data-aos="fade-up">
-          The wound is the place where the light enters you.
+        <p
+          class="quote lang-text"
+          data-aos="fade-up"
+          data-en="The wound is the place where the light enters you."
+          data-es="La herida es el lugar por donde entra la luz."
+        >
+          La herida es el lugar por donde entra la luz.
         </p>
         <p class="quote-author" data-aos="fade-up" data-aos-delay="200">
           — Rumi
@@ -782,26 +909,57 @@
     <!-- Services -->
     <section class="section" id="approach">
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up">How I Help You Heal</h2>
+        <h2
+          class="section-title lang-text"
+          data-aos="fade-up"
+          data-en="How I Help You Heal"
+          data-es="Cómo Te Ayudo a Sanar"
+        >
+          Cómo Te Ayudo a Sanar
+        </h2>
         <div class="services-grid">
           <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-icon">Brain</div>
+            <div class="service-icon">
+              <img
+                src="hero-metodo.svg"
+                alt="Bioneuroemoción®"
+                style="width: 50px; height: 50px"
+              />
+            </div>
             <h3>Bioneuroemoción®</h3>
-            <p>
-              Uncover unconscious conflicts stored in body and biology. Release
-              inherited pain.
+            <p
+              class="lang-text"
+              data-en="Uncover unconscious conflicts stored in body and biology. Release inherited pain."
+              data-es="Descubre conflictos inconscientes almacenados en el cuerpo y la biología. Libera el dolor heredado."
+            >
+              Descubre conflictos inconscientes almacenados en el cuerpo y la
+              biología. Libera el dolor heredado.
             </p>
           </div>
           <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-icon">Heart</div>
-            <h3>Logotherapy</h3>
+            <div class="service-icon">
+              <img
+                src="logotherapy.png"
+                alt="Logoterapia"
+                style="width: 50px; height: 50px"
+              />
+            </div>
+            <h3 class="lang-text" data-en="Logotherapy" data-es="Logoterapia">
+              Logoterapia
+            </h3>
             <p>
               Find your unique purpose — the “why” that makes suffering
               bearable.
             </p>
           </div>
           <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-icon">Users</div>
+            <div class="service-icon">
+              <img
+                src="users.svg"
+                alt="Holistic Therapy"
+                style="width: 50px; height: 50px"
+              />
+            </div>
             <h3>Holistic Therapy</h3>
             <p>
               CBT, relationships, spirituality — integrated for deep, lasting
@@ -809,17 +967,35 @@
             </p>
           </div>
           <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-icon">Shield</div>
+            <div class="service-icon">
+              <img
+                src="shield.svg"
+                alt="Crisis & Suicide Support"
+                style="width: 50px; height: 50px"
+              />
+            </div>
             <h3>Crisis & Suicide</h3>
             <p>Certified support in your darkest hour. You are not alone.</p>
           </div>
           <div class="service-card" data-aos="fade-up" data-aos-delay=" 200">
-            <div class="service-icon">Globe</div>
+            <div class="service-icon">
+              <img
+                src="globe.svg"
+                alt="Bilingual Services"
+                style="width: 50px; height: 50px"
+              />
+            </div>
             <h3>Bilingual</h3>
             <p>English & Spanish. Culturally rooted care for diverse hearts.</p>
           </div>
           <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-icon">Laptop</div>
+            <div class="service-icon">
+              <img
+                src="laptop.svg"
+                alt="eHealth Services"
+                style="width: 50px; height: 50px"
+              />
+            </div>
             <h3>eHealth</h3>
             <p>Secure online sessions. Healing from anywhere.</p>
           </div>
@@ -834,10 +1010,19 @@
       style="background: rgba(245, 230, 211, 0.4)"
     >
       <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Begin Your Healing</h2>
+        <h2
+          class="section-title lang-text"
+          data-aos="fade-up"
+          data-en="Begin Your Healing"
+          data-es="Comienza Tu Sanación"
+        >
+          Comienza Tu Sanación
+        </h2>
         <div class="contact-grid">
           <div class="contact-info">
-            <h3>Let’s Connect</h3>
+            <h3 class="lang-text" data-en="Let's Connect" data-es="Conectemos">
+              Conectemos
+            </h3>
             <div
               class="contact-item"
               data-aos="fade-right"
@@ -845,7 +1030,12 @@
             >
               <i class="fas fa-map-marker-alt"></i>
               <div>
-                Wynnum, Queensland<br /><em>Telehealth Australia-wide</em>
+                Wynnum, Queensland<br /><em
+                  class="lang-text"
+                  data-en="Telehealth Australia-wide"
+                  data-es="Telesalud en toda Australia"
+                  >Telesalud en toda Australia</em
+                >
               </div>
             </div>
             <div
@@ -982,6 +1172,41 @@
           }
         });
       });
+
+      // Language switching functionality
+      let currentLang = "es"; // Default to Spanish
+
+      function switchLanguage(lang) {
+        currentLang = lang;
+
+        // Update all text elements
+        document.querySelectorAll(".lang-text").forEach((element) => {
+          const text = element.getAttribute(`data-${lang}`);
+          if (text) {
+            element.textContent = text;
+          }
+        });
+
+        // Update active language button
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        document.querySelector(`[data-lang="${lang}"]`).classList.add("active");
+
+        // Store preference
+        localStorage.setItem("preferred-language", lang);
+      }
+
+      // Language button event listeners
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          switchLanguage(btn.getAttribute("data-lang"));
+        });
+      });
+
+      // Load saved language preference or default to Spanish
+      const savedLang = localStorage.getItem("preferred-language") || "es";
+      switchLanguage(savedLang);
     </script>
   </body>
 </html>

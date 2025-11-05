@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+    <!-- Globe/Earth -->
+    <circle cx="50" cy="50" r="35" fill="#4a90c2" stroke="#2c5aa0" stroke-width="2" />
+
+    <!-- Continents/Land masses -->
+    <path d="M25 35 Q35 30 45 35 Q40 45 35 50 Q30 45 25 35 Z" fill="#27ae60" />
+    <path d="M55 25 Q70 20 75 30 Q75 40 70 45 Q60 40 55 25 Z" fill="#27ae60" />
+    <path d="M20 60 Q30 55 40 60 Q35 70 25 75 Q20 70 20 60 Z" fill="#27ae60" />
+    <path d="M60 55 Q75 50 80 60 Q75 75 65 75 Q60 65 60 55 Z" fill="#27ae60" />
+
+    <!-- Language symbols - Spanish and English -->
+    <!-- "ES" flag colors -->
+    <rect x="35" y="42" width="8" height="6" fill="#c41e3a" rx="1" />
+    <rect x="35" y="44" width="8" height="2" fill="#ffc400" />
+
+    <!-- "EN" represented by small UK flag colors -->
+    <rect x="57" y="42" width="8" height="6" fill="#012169" rx="1" />
+    <path d="M57 42 L65 48 M65 42 L57 48" stroke="#ffffff" stroke-width="0.5" />
+    <path d="M61 42 L61 48 M57 45 L65 45" stroke="#ffffff" stroke-width="0.8" />
+    <path d="M61 42 L61 48 M57 45 L65 45" stroke="#c8102e" stroke-width="0.4" />
+
+    <!-- Connection lines showing global communication -->
+    <path d="M43 45 Q50 40 57 45" stroke="#3d7eb8" stroke-width="2" fill="none" opacity="0.8" />
+
+    <!-- Small speech bubbles -->
+    <circle cx="30" cy="30" r="4" fill="white" opacity="0.9" />
+    <path d="M26 32 L28 35 L32 32" fill="white" opacity="0.9" />
+
+    <circle cx="70" cy="70" r="4" fill="white" opacity="0.9" />
+    <path d="M66 72 L68 75 L72 72" fill="white" opacity="0.9" />
+</svg>
