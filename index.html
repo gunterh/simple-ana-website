@@ -134,20 +134,25 @@
 
       .lang-btn {
         background: transparent;
-        border: 1px solid var(--ocean);
+        border: none;
+        border-bottom: 2px solid transparent;
         color: var(--ocean);
-        padding: 0.4rem 0.8rem;
-        border-radius: 20px;
+        padding: 0.5rem 1rem;
+        border-radius: 0;
         cursor: pointer;
-        font-size: 0.85rem;
-        font-weight: 500;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
         transition: var(--transition);
       }
 
       .lang-btn.active,
       .lang-btn:hover {
-        background: var(--ocean);
-        color: white;
+        background: transparent;
+        border-bottom: 2px solid var(--ocean);
+        color: var(--deep-blue);
+        transform: translateY(-2px);
       }
 
       .hamburger {
@@ -200,7 +205,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: white;
+        background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(248, 251, 255, 0.9)), 
+                    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
         z-index: -1;
       }
 
@@ -251,45 +257,40 @@
       }
 
       .cta {
-        display: inline-block;
-        background: var(--ocean);
-        color: white;
-        padding: 1rem 2.5rem;
-        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        background: transparent;
+        color: var(--deep-blue);
+        border: none;
+        padding: 0;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 500;
+        text-transform: none;
+        letter-spacing: 0.5px;
+        font-size: 1.1rem;
         margin-top: 2rem;
         transition: var(--transition);
-        box-shadow: 0 8px 25px rgba(74, 144, 194, 0.4);
         font-family: "Playfair Display", serif;
+        position: relative;
+        gap: 0.8rem;
+      }
+      
+      .cta::after {
+        content: '→';
+        font-size: 1.2rem;
+        transition: var(--transition);
+        transform: translateX(0);
       }
 
       .cta:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 15px 35px rgba(74, 144, 194, 0.5);
-        background: var(--sky);
+        color: var(--ocean);
+      }
+      
+      .cta:hover::after {
+        transform: translateX(8px);
       }
 
-      .scroll-hint {
-        position: absolute;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        color: var(--azure);
-        font-size: 0.9rem;
-        opacity: 0.7;
-        animation: float 3s infinite ease-in-out;
-      }
 
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateX(-50%) translateY(0);
-        }
-        50% {
-          transform: translateX(-50%) translateY(-10px);
-        }
-      }
 
       /* Sections */
       .section {
@@ -314,7 +315,7 @@
         position: absolute;
         width: 80px;
         height: 2px;
-        background: var(--ocean);
+        background: linear-gradient(90deg, var(--deep-blue), var(--ocean), var(--sky));
         bottom: -15px;
         left: 50%;
         transform: translateX(-50%);
@@ -365,10 +366,10 @@
 
       .story-content {
         flex: 1;
-        padding: 2rem;
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 15px 40px rgba(30, 58, 95, 0.08);
+        padding: 1rem 0;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
         position: relative;
         margin: 0 2rem;
         max-width: 420px;
@@ -379,7 +380,7 @@
         position: absolute;
         width: 20px;
         height: 20px;
-        background: var(--ocean);
+        background: linear-gradient(135deg, var(--deep-blue), var(--ocean));
         border: 4px solid white;
         border-radius: 50%;
         top: 50%;
@@ -410,59 +411,82 @@
         font-style: italic;
       }
 
-      /* Services */
-      .services-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        margin-top: 3rem;
+      /* Services - Flowing Layout */
+      .services-flow {
+        max-width: 900px;
+        margin: 3rem auto 0;
+        padding: 0 2rem;
       }
 
-      .service-card {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 24px;
-        box-shadow: 0 15px 40px rgba(30, 58, 95, 0.08);
-        transition: var(--transition);
-        text-align: center;
-        position: relative;
-        overflow: hidden;
+      .service-item {
+        display: flex;
+        align-items: flex-start;
+        margin: 4rem 0;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
       }
 
-      .service-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(90deg, var(--ocean), var(--accent));
-        border-radius: 24px 24px 0 0;
+      .service-item.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
-      .service-card:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 25px 50px rgba(30, 58, 95, 0.15);
+      .service-item:nth-child(even) {
+        flex-direction: row-reverse;
+        text-align: right;
+      }
+
+      .service-item:nth-child(even) .service-content {
+        margin-left: 2rem;
+        margin-right: 0;
       }
 
       .service-icon {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, var(--ocean), var(--accent));
-        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 1.5rem;
-        color: white;
+        margin-right: 2rem;
+        position: relative;
+      }
+
+      .service-icon img {
+        filter: drop-shadow(0 8px 25px rgba(74, 144, 194, 0.2));
+        transition: all 0.3s ease;
+      }
+
+      .service-item:hover .service-icon img {
+        transform: scale(1.1);
+        filter: drop-shadow(0 12px 35px rgba(74, 144, 194, 0.3));
+      }
+
+      .service-content {
+        flex: 1;
+        margin-right: 2rem;
+      }
+
+      .service-content h3 {
+        color: var(--accent);
         font-size: 1.8rem;
-        box-shadow: 0 8px 25px rgba(74, 144, 194, 0.3);
+        margin-bottom: 1rem;
+        font-family: "Playfair Display", serif;
+      }
+
+      .service-content p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: var(--deep);
+        margin: 0;
       }
 
       /* Quote */
       .quote-section {
-        background: linear-gradient(135deg, var(--deep-blue), var(--deep));
-        color: white;
+        background: linear-gradient(rgba(245, 247, 250, 0.95), rgba(240, 243, 248, 0.95)), 
+                    url('https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+        color: var(--deep);
         text-align: center;
         padding: 6rem 1.5rem;
         position: relative;
@@ -561,23 +585,42 @@
       }
 
       .btn-submit {
-        background: var(--ocean);
-        color: white;
+        background: transparent;
+        color: var(--deep-blue);
         border: none;
-        padding: 1rem 2.5rem;
-        border-radius: 50px;
-        font-weight: 600;
+        border-bottom: 2px solid var(--ocean);
+        padding: 1rem 0;
+        border-radius: 0;
+        font-weight: 500;
         cursor: pointer;
         transition: var(--transition);
         font-family: "Playfair Display", serif;
         width: 100%;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        text-transform: none;
+        letter-spacing: 0.5px;
+        position: relative;
+        text-align: center;
+      }
+      
+      .btn-submit::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--deep-blue);
+        transition: var(--transition);
       }
 
       .btn-submit:hover {
-        background: var(--sky);
-        transform: translateY(-3px);
-        box-shadow: 0 12px 30px rgba(74, 144, 194, 0.4);
+        color: var(--ocean);
+        border-bottom-color: transparent;
+      }
+      
+      .btn-submit:hover::after {
+        width: 100%;
       }
 
       /* Footer */
@@ -601,13 +644,99 @@
         text-decoration: underline;
       }
 
+      /* Services Flow Layout */
+      .services-flow {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .service-item {
+        margin: 3rem 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .service-item.left {
+        justify-content: flex-start;
+      }
+
+      .service-item.right {
+        justify-content: flex-end;
+      }
+
+      .service-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        max-width: 600px;
+        width: 100%;
+      }
+      
+      .service-content > img {
+        align-self: center;
+      }
+
+      .service-item.right .service-content {
+        flex-direction: row-reverse;
+        text-align: right;
+      }
+
+      .service-icon-large {
+        width: 80px !important;
+        height: 80px !important;
+        flex-shrink: 0;
+        display: block;
+        object-fit: cover;
+        align-self: flex-start;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(74, 144, 194, 0.2);
+        transition: all 0.3s ease;
+      }
+      
+      .service-icon-large:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(74, 144, 194, 0.3);
+      }
+
+      .service-text {
+        flex: 1;
+      }
+
+      .service-text h3 {
+        margin: 0 0 1rem 0;
+        font-size: 1.5rem;
+        color: var(--deep-blue);
+      }
+
+      .service-text p {
+        margin: 0;
+        line-height: 1.6;
+        color: var(--text);
+      }
+
       /* Responsive */
       @media (min-width: 768px) {
         .hero h1 {
           font-size: 4rem;
         }
-        .services-grid {
-          grid-template-columns: repeat(2, 1fr);
+        .service-item.left,
+        .service-item.right {
+          justify-content: center;
+        }
+        
+        .service-content {
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
+        }
+        
+        .service-item.right .service-content {
+          flex-direction: column;
+          text-align: center;
+        }
+        
+        .service-icon-large {
+          margin: 0 auto 1rem auto;
         }
         .story-item {
           margin: 6rem 0;
@@ -615,8 +744,13 @@
       }
 
       @media (min-width: 992px) {
-        .services-grid {
-          grid-template-columns: repeat(3, 1fr);
+        .service-icon-large {
+          width: 100px !important;
+          height: 100px !important;
+        }
+        
+        .service-text h3 {
+          font-size: 1.8rem;
         }
         .contact-grid {
           grid-template-columns: 1fr 1fr;
@@ -655,6 +789,23 @@
         .nav-container {
           padding: 0 0.5rem;
           max-width: 100vw;
+        }
+        
+        .service-content {
+          gap: 1rem;
+        }
+        
+        .service-icon-large {
+          width: 60px !important;
+          height: 60px !important;
+        }
+        
+        .service-text h3 {
+          font-size: 1.2rem;
+        }
+        
+        .service-text p {
+          font-size: 0.9rem;
         }
 
         .logo {
@@ -732,13 +883,6 @@
         >
           Camina Conmigo
         </a>
-      </div>
-      <div
-        class="scroll-hint lang-text"
-        data-en="Scroll to begin"
-        data-es="Desplázate para comenzar"
-      >
-        Desplázate para comenzar
       </div>
     </section>
 
@@ -892,33 +1036,35 @@
         >
           Cómo Te Ayudo a Sanar
         </h2>
-        <div class="services-grid">
-          <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-icon">
+        <div class="services-flow">
+          <div class="service-item left" data-aos="fade-right" data-aos-delay="100">
+            <div class="service-content">
               <img
-                src="hero-metodo.svg"
+                src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                 alt="Bioneuroemoción®"
-                style="width: 50px; height: 50px"
+                class="service-icon-large"
               />
+              <div class="service-text">
+                <h3>Bioneuroemoción®</h3>
+                <p
+                  class="lang-text"
+                  data-en="Uncover unconscious conflicts stored in body and biology. Release inherited pain through this profound therapeutic approach."
+                  data-es="Descubre conflictos inconscientes almacenados en el cuerpo y la biología. Libera el dolor heredado a través de este enfoque terapéutico profundo."
+                >
+                  Descubre conflictos inconscientes almacenados en el cuerpo y la
+                  biología. Libera el dolor heredado a través de este enfoque terapéutico profundo.
+                </p>
+              </div>
             </div>
-            <h3>Bioneuroemoción®</h3>
-            <p
-              class="lang-text"
-              data-en="Uncover unconscious conflicts stored in body and biology. Release inherited pain."
-              data-es="Descubre conflictos inconscientes almacenados en el cuerpo y la biología. Libera el dolor heredado."
-            >
-              Descubre conflictos inconscientes almacenados en el cuerpo y la
-              biología. Libera el dolor heredado.
-            </p>
           </div>
-          <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-icon">
+          <div class="service-item right" data-aos="fade-left" data-aos-delay="200">
+            <div class="service-content">
               <img
-                src="logotherapy.png"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                 alt="Logoterapia"
-                style="width: 50px; height: 50px"
+                class="service-icon-large"
               />
-            </div>
+              <div class="service-text">
             <h3 class="lang-text" data-en="Logotherapy" data-es="Logoterapia">
               Logoterapia
             </h3>
@@ -927,52 +1073,85 @@
               bearable.
             </p>
           </div>
-          <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-icon">
+          
+          <div class="service-item left" data-aos="fade-right" data-aos-delay="300">
+            <div class="service-content">
               <img
-                src="users.svg"
+                src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                 alt="Holistic Therapy"
-                style="width: 50px; height: 50px"
+                class="service-icon-large"
               />
+              <div class="service-text">
+                <h3 class="lang-text" data-en="Holistic Therapy" data-es="Terapia Holística">
+                  Terapia Holística
+                </h3>
+                <p class="lang-text"
+                   data-en="CBT, relationships, spirituality — integrated for deep, lasting change that honors your whole being."
+                   data-es="TCC, relaciones, espiritualidad — integradas para un cambio profundo y duradero que honra todo tu ser.">
+                  TCC, relaciones, espiritualidad — integradas para un cambio profundo y duradero que honra todo tu ser.
+                </p>
+              </div>
             </div>
-            <h3>Holistic Therapy</h3>
-            <p>
-              CBT, relationships, spirituality — integrated for deep, lasting
-              change.
-            </p>
           </div>
-          <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-icon">
+          
+          <div class="service-item right" data-aos="fade-left" data-aos-delay="400">
+            <div class="service-content">
               <img
-                src="shield.svg"
+                src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                 alt="Crisis & Suicide Support"
-                style="width: 50px; height: 50px"
+                class="service-icon-large"
               />
+              <div class="service-text">
+                <h3 class="lang-text" data-en="Crisis & Suicide Support" data-es="Apoyo en Crisis y Suicidio">
+                  Apoyo en Crisis y Suicidio
+                </h3>
+                <p class="lang-text"
+                   data-en="Certified support in your darkest hour. You are not alone — together we'll find the light."
+                   data-es="Apoyo certificado en tu hora más oscura. No estás solo — juntos encontraremos la luz.">
+                  Apoyo certificado en tu hora más oscura. No estás solo — juntos encontraremos la luz.
+                </p>
+              </div>
             </div>
-            <h3>Crisis & Suicide</h3>
-            <p>Certified support in your darkest hour. You are not alone.</p>
           </div>
-          <div class="service-card" data-aos="fade-up" data-aos-delay=" 200">
-            <div class="service-icon">
+          
+          <div class="service-item left" data-aos="fade-right" data-aos-delay="500">
+            <div class="service-content">
               <img
-                src="globe.svg"
+                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                 alt="Bilingual Services"
-                style="width: 50px; height: 50px"
+                class="service-icon-large"
               />
+              <div class="service-text">
+                <h3 class="lang-text" data-en="Bilingual Services" data-es="Servicios Bilingües">
+                  Servicios Bilingües
+                </h3>
+                <p class="lang-text"
+                   data-en="English & Spanish. Culturally rooted care for diverse hearts, honoring your heritage."
+                   data-es="Inglés y español. Cuidado culturalmente arraigado para corazones diversos, honrando tu herencia.">
+                  Inglés y español. Cuidado culturalmente arraigado para corazones diversos, honrando tu herencia.
+                </p>
+              </div>
             </div>
-            <h3>Bilingual</h3>
-            <p>English & Spanish. Culturally rooted care for diverse hearts.</p>
           </div>
-          <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-icon">
+          
+          <div class="service-item right" data-aos="fade-left" data-aos-delay="600">
+            <div class="service-content">
               <img
-                src="laptop.svg"
+                src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                 alt="eHealth Services"
-                style="width: 50px; height: 50px"
+                class="service-icon-large"
               />
+              <div class="service-text">
+                <h3 class="lang-text" data-en="eHealth Services" data-es="Servicios de eSalud">
+                  Servicios de eSalud
+                </h3>
+                <p class="lang-text"
+                   data-en="Secure online sessions. Healing from anywhere, bringing therapy to your safe space."
+                   data-es="Sesiones seguras en línea. Sanación desde cualquier lugar, llevando la terapia a tu espacio seguro.">
+                  Sesiones seguras en línea. Sanación desde cualquier lugar, llevando la terapia a tu espacio seguro.
+                </p>
+              </div>
             </div>
-            <h3>eHealth</h3>
-            <p>Secure online sessions. Healing from anywhere.</p>
           </div>
         </div>
       </div>
@@ -982,7 +1161,7 @@
     <section
       class="section"
       id="contact"
-      style="background: rgba(245, 230, 211, 0.4)"
+      style="background: white"
     >
       <div class="container">
         <h2
