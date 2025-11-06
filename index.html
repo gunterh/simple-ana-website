@@ -648,6 +648,7 @@
       .services-flow {
         max-width: 1000px;
         margin: 0 auto;
+        padding: 0 1rem;
       }
 
       .service-item {
@@ -715,28 +716,46 @@
       }
 
       /* Responsive */
-      @media (min-width: 768px) {
-        .hero h1 {
-          font-size: 4rem;
-        }
+      @media (max-width: 767px) {
         .service-item.left,
         .service-item.right {
-          justify-content: center;
+          justify-content: center !important;
         }
         
         .service-content {
-          flex-direction: column;
-          text-align: center;
-          align-items: center;
+          flex-direction: column !important;
+          text-align: center !important;
+          align-items: center !important;
+          max-width: 100% !important;
         }
         
         .service-item.right .service-content {
-          flex-direction: column;
-          text-align: center;
+          flex-direction: column !important;
+          text-align: center !important;
         }
         
         .service-icon-large {
-          margin: 0 auto 1rem auto;
+          margin: 0 auto 1.5rem auto !important;
+          width: 120px !important;
+          height: 120px !important;
+        }
+        
+        .service-text {
+          text-align: center !important;
+        }
+        
+        .services-flow {
+          padding: 0 1rem;
+        }
+        
+        .service-item {
+          margin: 2rem 0;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .hero h1 {
+          font-size: 4rem;
         }
         .story-item {
           margin: 6rem 0;
@@ -792,20 +811,29 @@
         }
         
         .service-content {
-          gap: 1rem;
+          gap: 0.5rem !important;
+          flex-direction: column !important;
+          text-align: center !important;
         }
         
         .service-icon-large {
-          width: 60px !important;
-          height: 60px !important;
+          width: 100px !important;
+          height: 100px !important;
+          margin: 0 auto 1rem auto !important;
         }
         
         .service-text h3 {
-          font-size: 1.2rem;
+          font-size: 1.3rem;
+          margin-bottom: 0.8rem;
         }
         
         .service-text p {
-          font-size: 0.9rem;
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+        
+        .services-flow {
+          padding: 0 0.5rem;
         }
 
         .logo {
@@ -819,23 +847,60 @@
 
         .hero {
           padding-top: 100px;
+          min-height: 500px;
         }
 
         .hero h1 {
-          font-size: 2.6rem;
+          font-size: 2.2rem;
         }
+        
+        .hero .subtitle {
+          font-size: 1rem;
+        }
+        
+        .hero p {
+          font-size: 1rem;
+        }
+        
         .section {
-          padding: 4rem 0;
+          padding: 3rem 0;
         }
         .section-title {
-          font-size: 2rem;
+          font-size: 1.8rem;
         }
+        .story-path {
+          padding: 0 1rem;
+        }
+        
+        .path-line {
+          display: none;
+        }
+        
+        .story-item {
+          flex-direction: column !important;
+          text-align: center !important;
+          margin: 2rem 0 !important;
+        }
+        
         .story-content {
-          margin: 0 1rem;
-          padding: 1.8rem;
+          margin: 0 !important;
+          padding: 1.5rem;
+          max-width: 100% !important;
         }
         .story-content::before {
           display: none;
+        }
+        
+        .quote {
+          font-size: 1.4rem;
+        }
+        
+        .contact-grid {
+          gap: 2rem;
+        }
+        
+        .contact-form {
+          padding: 1.5rem;
         }
       }
     </style>
